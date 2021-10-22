@@ -1,0 +1,20 @@
+#!/home/daoudi/Projects/scripts/venv/bin/python
+import os
+from datetime import date
+from bs4 import BeautifulSoup
+from urllib.request import urlopen, urlretrieve
+
+
+URL = "https://apod.nasa.gov/apod/"
+DIR = "/home/daoudi/Projects/scripts/res/wpp/"
+IMG = DIR + str(date.today()) + '.jpg'
+
+
+if not os.path.isfile(IMG):
+    page = urlopen(URL)
+    soup = BeautifulSoup(page, "html.parser")
+    results = soup.findAll('img')
+    if results:
+        os.system(f"rm {DIR}* > /dev/null 2>&1")
+        urlretrieve(URL + results[0]['src'], IMG)
+        os.system(f"gsettings set org.gnome.desktop.background picture-uri file:///{IMG}")

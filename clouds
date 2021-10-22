@@ -1,0 +1,17 @@
+#!/home/daoudi/Projects/scripts/venv/bin/python
+import os
+import urllib.request
+from datetime import date
+
+URL = "https://www.meteo.be/resources/forecasts/models/alaro40/CLOUDINESS_TOTAL_en.mp4"
+DIR = "/home/daoudi/Projects/scripts/res/clouds/"
+VID = DIR + str(date.today()) + '.mp4'
+
+
+if not os.path.isfile(VID):
+    print('Downloading video')
+    os.system(f'rm {DIR}* > /dev/null 2>&1')
+    urllib.request.urlretrieve(URL, VID)
+    print('Download done')
+
+os.system(f'mpv --geometry=40% {VID}')
