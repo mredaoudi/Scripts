@@ -1,4 +1,4 @@
-# My day to day scripts written in Python 3
+# My day to day scripts written in Python
 
 ## wpp
 
