@@ -1,6 +1,7 @@
 # Custom ignore files
-res/wpp/*
-res/clouds/*
+res/wpp/**
+res/clouds/**
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
